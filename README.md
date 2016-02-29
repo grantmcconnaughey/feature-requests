@@ -1,5 +1,9 @@
 # Feature Requests
 
+[![Build Status](https://travis-ci.org/grantmcconnaughey/feature-requests.svg?branch=master)](https://travis-ci.org/grantmcconnaughey/feature-requests)
+
+[![Coverage Status](https://coveralls.io/repos/github/grantmcconnaughey/feature-requests/badge.svg?branch=master)](https://coveralls.io/github/grantmcconnaughey/feature-requests?branch=master)
+
 ## Running the App
 
 ### Installing Dependencies
