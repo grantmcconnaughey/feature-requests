@@ -4,6 +4,8 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/grantmcconnaughey/feature-requests/badge.svg?branch=master)](https://coveralls.io/github/grantmcconnaughey/feature-requests?branch=master)
 
+A CRUD application for managing feature requests. Uses Django 1.9 and runs on Python 2.7 or Python 3.4+.
+
 ## Running the App
 
 ### Installing Dependencies
