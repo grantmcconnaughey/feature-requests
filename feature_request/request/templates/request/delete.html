@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block title %}Delete Feature Request{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="page-header">
+          <h1>Delete Feature Request</h1>
+        </div>
+
+        <p>
+          Are you sure you would like to delete the feature request <strong>"{{ feature_request.title }}"</strong>?
+        </p>
+
+        <form method="post" action="" class="form">
+          {% csrf_token %}
+          {% bootstrap_button "Delete" button_type="submit" button_class="btn-primary" %}
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

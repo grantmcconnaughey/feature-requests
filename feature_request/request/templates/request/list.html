@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block title %}New Feature Request{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="page-header">
+          <h1>Feature Requests</h1>
+        </div>
+        {% bootstrap_messages %}
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Client</th>
+                <th>Priority</th>
+                <th>Product Area</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for feature_request in feature_requests %}
+                <tr>
+                  <td><a href="{{ feature_request.get_absolute_url }}">{{ feature_request.title }}</a></td>
+                  <td>{{ feature_request.client }}</td>
+                  <td>{{ feature_request.client_priority }}</td>
+                  <td>{{ feature_request.product_area }}</td>
+                  <td>
+                    <a href="{% url "update" feature_request.pk %}">{% bootstrap_icon 'edit' %}</a>
+                    <a href="{% url "delete" feature_request.pk %}">{% bootstrap_icon 'trash' %}</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="text-center">
+            {% bootstrap_pagination page_obj %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

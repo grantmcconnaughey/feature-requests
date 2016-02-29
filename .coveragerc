@@ -1,0 +1,6 @@
+[run]
+include = feature_request/request/*
+
+[report]
+show_missing = True
+precision = 2

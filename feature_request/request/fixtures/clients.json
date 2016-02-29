@@ -1,0 +1,23 @@
+[
+  {
+    "model": "request.client",
+    "pk": 1,
+    "fields": {
+      "name": "Client A"
+    }
+  },
+  {
+    "model": "request.client",
+    "pk": 2,
+    "fields": {
+      "name": "Client B"
+    }
+  },
+  {
+    "model": "request.client",
+    "pk": 3,
+    "fields": {
+      "name": "Client C"
+    }
+  }
+]

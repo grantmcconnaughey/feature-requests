@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block title %}{{ feature_request }}{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="page-header">
+          <h1>{{ feature_request.title }}</h1>
+        </div>
+
+        <div>
+          <dl class="dl-horizontal">
+            {% if feature_request.description %}
+              <dt>Description:</dt>
+              <dd>{{ feature_request.description }}</dd>
+            {% endif %}
+            {% if feature_request.client %}
+              <dt>Client:</dt>
+              <dd>{{ feature_request.client }}</dd>
+            {% endif %}
+            {% if feature_request.client_priority %}
+              <dt>Client Priority:</dt>
+              <dd>{{ feature_request.client_priority }}</dd>
+            {% endif %}
+            {% if feature_request.product_area %}
+              <dt>Product Area:</dt>
+              <dd>{{ feature_request.product_area }}</dd>
+            {% endif %}
+            {% if feature_request.target_date %}
+              <dt>Target Date:</dt>
+              <dd>{{ feature_request.target_date }}</dd>
+            {% endif %}
+            {% if feature_request.ticket_url %}
+              <dt>Ticket URL:</dt>
+              <dd><a href="{{ feature_request.ticket_url }}">{{ feature_request.ticket_url }}</a></dd>
+            {% endif %}
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

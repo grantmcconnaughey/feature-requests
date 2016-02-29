@@ -1,0 +1,67 @@
+[
+  {
+    "model": "request.featurerequest",
+    "pk": 1,
+    "fields": {
+      "title": "Make the home page \"pop\"",
+      "description": "The boss says he wants the home page to \"pop\", whatever that means.",
+      "client": 1,
+      "client_priority": 1,
+      "product_area": 2,
+      "target_date": null,
+      "ticket_url": ""
+    }
+  },
+  {
+    "model": "request.featurerequest",
+    "pk": 2,
+    "fields": {
+      "title": "Make everything prettier",
+      "description": "Could you use a different theme? This one is blinding.",
+      "client": 2,
+      "client_priority": 1,
+      "product_area": 3,
+      "target_date": null,
+      "ticket_url": ""
+    }
+  },
+  {
+    "model": "request.featurerequest",
+    "pk": 3,
+    "fields": {
+      "title": "Add TPS reports",
+      "description": "Did you get the memo? I'll make sure you get a copy of that memo.",
+      "client": 3,
+      "client_priority": 1,
+      "product_area": 4,
+      "target_date": null,
+      "ticket_url": "http://tinyurl.com/orm4yu5"
+    }
+  },
+  {
+    "model": "request.featurerequest",
+    "pk": 4,
+    "fields": {
+      "title": "Downgrade the boss to Windows XP",
+      "description": "The boss says he doesn't \"get Windows 10\" and instead of going back to Windows 7 he'd prefer to go straight back to Windows XP. Grab a old PC from the closet and upgrade him by the end of the week.",
+      "client": 1,
+      "client_priority": 2,
+      "product_area": 1,
+      "target_date": "2016-04-08",
+      "ticket_url": ""
+    }
+  },
+  {
+    "model": "request.featurerequest",
+    "pk": 5,
+    "fields": {
+      "title": "Add sortable columns to reporting software",
+      "description": "The reporting software is almost done. Make sure the columns are sortable.",
+      "client": 2,
+      "client_priority": 2,
+      "product_area": 1,
+      "target_date": null,
+      "ticket_url": ""
+    }
+  }
+]

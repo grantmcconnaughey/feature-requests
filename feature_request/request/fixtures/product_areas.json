@@ -1,0 +1,34 @@
+[
+  {
+    "model": "request.productarea",
+    "pk": 1,
+    "fields": {
+      "code": "POL",
+      "name": "Policies"
+    }
+  },
+  {
+    "model": "request.productarea",
+    "pk": 2,
+    "fields": {
+      "code": "BILL",
+      "name": "Billing"
+    }
+  },
+  {
+    "model": "request.productarea",
+    "pk": 3,
+    "fields": {
+      "code": "CLAIM",
+      "name": "Claims"
+    }
+  },
+  {
+    "model": "request.productarea",
+    "pk": 4,
+    "fields": {
+      "code": "REP",
+      "name": "Reports"
+    }
+  }
+]
