@@ -13,25 +13,20 @@ A CRUD application for managing feature requests. Uses Django 1.9 and runs on Py
 
 ## Open Source
 
-This application uses open source software to run.
+This application runs on open source software.
 
 * **Django 1.9**
 * **Bootstrap 3**
 * **django-bootstrap3** — Django utilities for working with Bootstrap 3
-* **django-ordered-model** — Django package for rearranging Feature Request's client priority
+* **django-ordered-model** — Django package for rearranging feature request's client priority
 * **factory-boy** — Used to create model instances for tests
 * **coverage** — Adds test coverage tracking
 
 ## Running the App
 
-### Installing Dependencies
+### Install Dependencies
 
-It's a good idea to create a virtual environment (although that isn't
-required). If you're using virtualenvwrapper then run:
-
-    mkvirtualenv feature_requests
-
-Next, install the dependencies from requirements.txt:
+Use `pip` to install the app's dependencies from requirements.txt:
 
     pip install -r requirements.txt
 
@@ -47,6 +42,8 @@ Next, load the sample data into the database.
 
     python manage.py loaddata clients product_areas feature_requests
 
+This adds 3 clients, 4 product areas, and 5 sample feature requests.
+
 ### Run the Server
 
 Finally, run the server and navigate to http://127.0.0.1:8000/ in your browser.
@@ -55,20 +52,24 @@ Finally, run the server and navigate to http://127.0.0.1:8000/ in your browser.
 
 ## Running the Tests
 
-To run the tests, first ensure that you are in the outer feature_request
-directory (the one that contains the files `manage.py` and `README.md`). Then
-run the following command:
+To run the tests, first ensure that you are in the project's root directory
+(the one that contains the files `manage.py`, `README.md`, and `requirements.txt`). 
+Then run the following command:
 
     coverage run manage.py test
 
-To view the test coverage statistics, next run:
-
-    coverage report
+To view the test coverage statistics run `coverage report`.
 
 ## Screenshots
 
+### List
+
 ![Feature Requests list](screenshots/list.png)
 
+### Detail
+
 ![Feature Requests detail](screenshots/detail.png)
+
+### Create
 
 ![Feature Requests create](screenshots/create.png)
