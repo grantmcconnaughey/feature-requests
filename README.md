@@ -8,7 +8,7 @@ A CRUD application for managing feature requests. Uses Django 1.9 and runs on Py
 ## Features
 
 * A full CRUD application for managing and viewing reature requests.
-* Uses Django 1.9.2 and Bootstrap 3
+* Uses Django 1.9 and Bootstrap 3
 * 100% test coverage
 
 ## Open Source
@@ -53,7 +53,7 @@ Finally, run the server and navigate to http://127.0.0.1:8000/ in your browser.
 ## Running the Tests
 
 To run the tests, first ensure that you are in the project's root directory
-(the one that contains the files `manage.py`, `README.md`, and `requirements.txt`). 
+(the one that contains the files `manage.py`, `README.md`, and `requirements.txt`).
 Then run the following command:
 
     coverage run manage.py test
