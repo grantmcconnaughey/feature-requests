@@ -40,6 +40,10 @@
             {% endif %}
           </dl>
         </div>
+        <div class="text-center">
+          <a href="{% url "update" feature_request.pk %}" class="btn btn-default">{% bootstrap_icon 'edit' %} Update</a>
+          <a href="{% url "delete" feature_request.pk %}" class="btn btn-danger">{% bootstrap_icon 'trash' %} Delete</a>
+        </div>
       </div>
     </div>
   </div>

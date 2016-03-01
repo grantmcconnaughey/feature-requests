@@ -18,7 +18,6 @@ class ProductAreaFactory(DjangoModelFactory):
         model = ProductArea
         django_get_or_create = ('name',)
 
-    code = 'BILL'
     name = 'Billing'
 
 

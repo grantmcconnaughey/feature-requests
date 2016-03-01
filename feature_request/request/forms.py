@@ -11,19 +11,22 @@ class FeatureRequestForm(forms.ModelForm):
                   'product_area', 'target_date', 'ticket_url']
 
     def save(self, commit=True):
-        data = self.cleaned_data
+        if self.errors:
+            raise ValueError(
+                "The %s could not be %s because the data didn't validate." % (
+                    self.instance._meta.object_name,
+                    'created' if self.instance._state.adding else 'changed',
+                )
+            )
+        if commit:
+            # All other instance fields are set elsewhere. Make sure
+            # client_priority is set to None initially so that it will be
+            # updated when we call self.instance.to()
+            self.instance.client_priority = None
+            self.instance.save()
 
-        prior_client_priority_requests = FeatureRequest.objects.filter(
-            client=data['client'], client_priority=data['client_priority'])
+            # Set this feature request's client_priority field and moves all
+            # other feature requests (if necessary)
+            self.instance.to(self.cleaned_data['client_priority'])
 
-        # If this client already has feature requests at this priority
-        if prior_client_priority_requests.exists():
-            # Bump up each client priority by 1 to make room for the new request
-            # Note: This doesn't scale well. Change the client priority to use
-            # linked nodes so that inserts don't require updating every other
-            # feature request for this client.
-            for feature_request in prior_client_priority_requests:
-                feature_request.client_priority += 1
-                feature_request.save()
-
-        return super(FeatureRequestForm, self).save(commit)
+        return self.instance

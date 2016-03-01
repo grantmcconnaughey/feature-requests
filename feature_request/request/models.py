@@ -1,6 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.six import python_2_unicode_compatible
+from ordered_model.models import OrderedModelBase
 
 
 @python_2_unicode_compatible
@@ -18,7 +19,6 @@ class Client(models.Model):
 @python_2_unicode_compatible
 class ProductArea(models.Model):
 
-    code = models.CharField(max_length=55, unique=True)
     name = models.CharField(max_length=255)
 
     class Meta:
@@ -29,15 +29,17 @@ class ProductArea(models.Model):
 
 
 @python_2_unicode_compatible
-class FeatureRequest(models.Model):
+class FeatureRequest(OrderedModelBase):
 
     title = models.CharField(max_length=255)
     description = models.TextField()
     client = models.ForeignKey(Client)
-    client_priority = models.IntegerField()
+    client_priority = models.PositiveIntegerField(db_index=True, null=True,
+                                                  blank=True)
     product_area = models.ForeignKey(ProductArea)
     target_date = models.DateField(null=True, blank=True)
     ticket_url = models.URLField(null=True, blank=True)
+    order_field_name = 'client_priority'
 
     class Meta:
         ordering = ('client', 'client_priority')
