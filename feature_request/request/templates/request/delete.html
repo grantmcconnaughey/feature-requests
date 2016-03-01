@@ -8,6 +8,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
+        <ol class="breadcrumb">
+          <li><a href="/">Feature Requests</a></li>
+          <li><a href="{% url "detail" feature_request.pk %}">{{ feature_request }}</a></li>
+          <li class="active">Delete</li>
+        </ol>
+
         <div class="page-header">
           <h1>Delete Feature Request</h1>
         </div>

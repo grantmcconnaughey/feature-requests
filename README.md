@@ -19,7 +19,7 @@ This application runs on open source software.
 * **Bootstrap 3**
 * **django-bootstrap3** — Django utilities for working with Bootstrap 3
 * **django-ordered-model** — Django package for rearranging feature request's client priority
-* **factory-boy** — Used to create model instances for tests
+* **factory-boy** — Used to create test data
 * **coverage** — Adds test coverage tracking
 
 ## Running the App
