@@ -9,15 +9,11 @@ class FeatureRequestForm(forms.ModelForm):
         model = FeatureRequest
         fields = ['title', 'description', 'client', 'client_priority',
                   'product_area', 'target_date', 'ticket_url']
+        widgets = {
+            'target_date': forms.TextInput(attrs={'placeholder': 'MM/DD/YYYY'}),
+        }
 
     def save(self, commit=True):
-        if self.errors:
-            raise ValueError(
-                "The %s could not be %s because the data didn't validate." % (
-                    self.instance._meta.object_name,
-                    'created' if self.instance._state.adding else 'changed',
-                )
-            )
         if commit:
             # All other instance fields are set elsewhere. Make sure
             # client_priority is set to None initially so that it will be
