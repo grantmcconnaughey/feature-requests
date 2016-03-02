@@ -86,6 +86,55 @@ class FeatureRequestTests(TestCase):
         self.assertEqual(original_request.client, client)
         self.assertEqual(original_request.client_priority, 2)
 
+    def test_create_post_does_not_bump_the_client_priority_number_if_different_clients(self):
+        client1 = ClientFactory(name='Client 1')
+        client2 = ClientFactory(name='Client 2')
+        product_area = ProductAreaFactory()
+        feature_request = FeatureRequestFactory(client=client1, client_priority=1)
+        url = reverse('create')
+
+        response = self.client.post(url, data={
+            'title': 'New Request',
+            'description': 'Do something',
+            'client': client2.pk,
+            'client_priority': 1,
+            'product_area': product_area.pk,
+        })
+
+        # The new request now gets client priority 1
+        new_request = FeatureRequest.objects.exclude(pk=feature_request.pk).get()
+        self.assertEqual(new_request.client, client2)
+        self.assertEqual(new_request.client_priority, 1)
+
+        # The old request stays on client priority 1 since it is a different client
+        original_request = FeatureRequest.objects.get(pk=feature_request.pk)
+        self.assertEqual(original_request.client, client1)
+        self.assertEqual(original_request.client_priority, 1)
+
+    def test_create_post_does_not_bump_the_client_priority_number_if_different_priority(self):
+        client = ClientFactory()
+        product_area = ProductAreaFactory()
+        feature_request = FeatureRequestFactory(client_priority=1)
+        url = reverse('create')
+
+        response = self.client.post(url, data={
+            'title': 'New Request',
+            'description': 'Do something',
+            'client': client.pk,
+            'client_priority': 2,
+            'product_area': product_area.pk,
+        })
+
+        # The new request gets client priority 2
+        new_request = FeatureRequest.objects.exclude(pk=feature_request.pk).get()
+        self.assertEqual(new_request.client, client)
+        self.assertEqual(new_request.client_priority, 2)
+
+        # The old request stays on client priority 1 since it is a different priority
+        original_request = FeatureRequest.objects.get(pk=feature_request.pk)
+        self.assertEqual(original_request.client, client)
+        self.assertEqual(original_request.client_priority, 1)
+
     def test_create_post_redirects_to_list(self):
         client = ClientFactory()
         product_area = ProductAreaFactory()

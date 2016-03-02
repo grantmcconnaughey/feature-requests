@@ -40,6 +40,7 @@ class FeatureRequest(OrderedModelBase):
     target_date = models.DateField(null=True, blank=True)
     ticket_url = models.URLField(null=True, blank=True)
     order_field_name = 'client_priority'
+    order_with_respect_to = 'client'
 
     class Meta:
         ordering = ('client', 'client_priority')

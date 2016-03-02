@@ -15,14 +15,19 @@ class FeatureRequestForm(forms.ModelForm):
 
     def save(self, commit=True):
         if commit:
-            # All other instance fields are set elsewhere. Make sure
-            # client_priority is set to None initially so that it will be
-            # updated when we call self.instance.to()
-            self.instance.client_priority = None
-            self.instance.save()
+            priority = self.cleaned_data['client_priority']
+            if FeatureRequest.objects.filter(client_priority=priority).exists():
+                # All other instance fields are set elsewhere. Make sure
+                # client_priority is set to None initially so that it will be
+                # updated when we call self.instance.to()
+                self.instance.client_priority = None
+                self.instance.save()
 
-            # Set this feature request's client_priority field and moves all
-            # other feature requests (if necessary)
-            self.instance.to(self.cleaned_data['client_priority'])
+                # Set this feature request's client_priority field and moves all
+                # other feature requests (if necessary)
+                self.instance.to(priority)
+            else:
+                self.instance.client_priority = priority
+                self.instance.save()
 
         return self.instance
